@@ -1,4 +1,4 @@
-docker build --tag stevenfollis/oneapi:base-toolkit:2024.2.1 .
+docker build --tag stevenfollis/oneapi:base-toolkit-2024.2.1 .
 
 docker run \
     --env GRANT_SUDO=yes \
