@@ -18,4 +18,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file /oneapi/base-toolkit/Dockerfile --tag stevenfollis/oneapi:base-toolkit-${GITHUB_SHA::7}
+      run: docker build . --file oneapi/base-toolkit/Dockerfile --tag stevenfollis/oneapi:base-toolkit-${GITHUB_SHA::7}
