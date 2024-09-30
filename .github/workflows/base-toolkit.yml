@@ -9,9 +9,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  DOCKERHUB_REPOSTIORY: stevenfollis
-
 jobs:
   
   build:
@@ -19,6 +16,9 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     
+    env:
+      DOCKERHUB_REPOSTIORY: stevenfollis
+
     steps:
     - uses: actions/checkout@v4
 
@@ -37,7 +37,7 @@ jobs:
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.24.0
       with:
-        image-ref: docker.io/${DOCKERHUB_REPOSTIORY}/oneapi:base-toolkit-${GITHUB_SHA::7}
+        image-ref: ${DOCKERHUB_REPOSTIORY}/oneapi:base-toolkit-${GITHUB_SHA::7}
         format: table
         exit-code: '1'
         ignore-unfixed: true
