@@ -41,9 +41,10 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build . \
+      run: docker build \
               --file oneapi/base-toolkit/Dockerfile \
-              --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${SHA_SHORT}
+              --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${SHA_SHORT} \
+              .
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.24.0
