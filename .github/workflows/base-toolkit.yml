@@ -31,6 +31,9 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file oneapi/base-toolkit/Dockerfile --tag ${DOCKERHUB_REPOSTIORY}/oneapi:base-toolkit-${GITHUB_SHA::7}
 
+    - name: Test
+      run: echo "${DOCKERHUB_REPOSTIORY}/oneapi:base-toolkit-${GITHUB_SHA::7}"
+
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.24.0
       with:
