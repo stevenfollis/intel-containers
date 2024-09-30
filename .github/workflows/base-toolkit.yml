@@ -13,7 +13,6 @@ jobs:
   
   build:
 
-    #runs-on: ubuntu-latest
     runs-on: self-hosted
     
     env:
@@ -35,25 +34,6 @@ jobs:
           --file oneapi/base-toolkit/Dockerfile \
           --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7} \
           .
-
-    # - name: Scan image with Trivy
-    #   run: |
-    #     docker run \
-    #       --rm \
-    #       -v /var/run/docker.sock:/var/run/docker.sock \
-    #       -v $HOME/Library/Caches:/root/.cache/ \
-    #       aquasec/trivy:0.28.1 \
-    #       image stevenfollis/oneapi:base-toolkit-2024.2.1
-    #       .
-    # - name: Run Trivy vulnerability scanner
-    #   uses: aquasecurity/trivy-action@0.24.0
-    #   with:
-    #     image-ref: ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${SHA_SHORT}
-    #     format: table
-    #     exit-code: '1'
-    #     ignore-unfixed: true
-    #     vuln-type: os,library
-    #     severity: CRITICAL,HIGH
 
     - name: Push the Docker image
       run: docker push ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}    
