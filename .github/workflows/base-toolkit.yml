@@ -14,12 +14,13 @@ jobs:
   build:
 
     runs-on: self-hosted
-    
+
     env:
       DOCKERHUB_REPOSTIORY: stevenfollis
       DOCKERHUB_IMAGE: oneapi
       DOCKERHUB_TAG: 'base-toolkit'
-
+    
+    steps:
     - uses: actions/checkout@v4
 
     - name: Login to Docker Hub
