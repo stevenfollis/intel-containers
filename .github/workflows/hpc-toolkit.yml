@@ -1,0 +1,22 @@
+name: oneAPI HPC Toolkit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - oneapi/hpc-toolkit/**
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  
+  build:
+
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file oneapi/hpc-toolkit/Dockerfile --tag stevenfollis/oneapi:hpc-toolkit-${GITHUB_SHA::7}
