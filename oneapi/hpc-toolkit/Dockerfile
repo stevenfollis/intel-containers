@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # ============================================
 
 # Download and install offline oneAPI package  
-RUN wget -O oneapi.sh ${ONEAPI_INSTALLER_URL} && \
+RUN wget --quiet --output-document oneapi.sh ${ONEAPI_INSTALLER_URL} && \
     sh ./oneapi.sh -a --silent --cli --eula accept && \
     rm oneapi.sh && \
     rm -rf intel
