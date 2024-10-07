@@ -26,7 +26,7 @@ RUN wget --quiet --output-document oneapi.sh ${ONEAPI_INSTALLER_URL} && \
 # https://dgpu-docs.intel.com/driver/installation.html#ubuntu
 # ============================================
 
-RUN wget -qO driver.run ${INTEL_GPU_DRIVER_URL} && \
+RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
     chmod +x driver.run && \
     sudo ./driver.run && \
     rm driver.run
@@ -39,7 +39,7 @@ RUN apt update && \
         wget
 
 # 2. Add the online network package repository.
-RUN wget -qO - https://repositories.intel.com/gpu/intel-graphics.key | \
+RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-graphics.key | \
     sudo gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg && \
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/gpu/ubuntu jammy/lts/2350 unified" > /etc/apt/sources.list.d/intel-gpu-jammy.list && \
     sudo apt update
