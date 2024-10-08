@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 concurrency: 
-  group: hpc-toolkit
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 env:
   DOCKER_BUILDKIT: '1'
