@@ -11,7 +11,7 @@ on:
 
 env:
       DOCKER_BUILDKIT: '1'
-      DOCKERFILE_PATH: oneapi/images/base-toolkit/Dockerfile
+      DOCKERFILE_PATH: images/oneapi/base-toolkit/Dockerfile
       DOCKERHUB_REPOSTIORY: stevenfollis
       DOCKERHUB_IMAGE: oneapi
       DOCKERHUB_TAG: 'base-toolkit'
