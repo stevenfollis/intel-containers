@@ -29,6 +29,7 @@ jobs:
           --file ${DOCKERFILE_PATH} \
           --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7} \
           .
+
   scan:
     runs-on: self-hosted
     needs: build
@@ -69,7 +70,7 @@ jobs:
   clean:
     runs-on: self-hosted
     if: ${{ always() }}
-    needs: [build, push]
+    needs: [build, scan, push]
     steps:
     - name: Prune the runner
       run: docker system prune --all --force
