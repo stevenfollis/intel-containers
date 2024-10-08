@@ -9,7 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-concurrency: quantum-sdk
+concurrency: 
+  group: quantum-sdk
 
 env:
   DOCKER_BUILDKIT: '1'

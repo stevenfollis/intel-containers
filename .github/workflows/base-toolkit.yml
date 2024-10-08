@@ -9,7 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-concurrency: base-toolkit
+concurrency: 
+  group: base-toolkit
 
 env:
   DOCKER_BUILDKIT: '1'

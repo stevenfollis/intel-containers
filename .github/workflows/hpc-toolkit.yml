@@ -9,7 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-concurrency: hpc-toolkit
+concurrency: 
+  group: hpc-toolkit
 
 env:
   DOCKER_BUILDKIT: '1'
