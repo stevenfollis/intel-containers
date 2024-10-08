@@ -15,6 +15,7 @@ env:
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: oneapi
   DOCKERHUB_TAG: 'quantum-sdk'
+  TRIVY_IMAGE_TAG: '0.55.0'
 
 jobs:
   
@@ -28,6 +29,29 @@ jobs:
           --file ${DOCKERFILE_PATH} \
           --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7} \
           .
+  scan:
+    runs-on: self-hosted
+    needs: build
+    permissions:
+      # required for all workflows
+      security-events: write
+    steps:
+    - name: Scan container image with Trivy
+      run: |
+        docker run \
+          --volume /var/run/docker.sock:/var/run/docker.sock \
+          --volume /trivy/.cache:/root/.cache/ \
+          --volume $PWD:/result \
+          aquasec/trivy:${TRIVY_IMAGE_TAG} \
+          image \
+          --format sarif \
+          --output /result/report.sarif \
+          ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        # Path to SARIF file relative to the root of the repository
+        sarif_file: results.sarif
 
   push:
     runs-on: self-hosted
