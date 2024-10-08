@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - oneapi/images/base-toolkit/**
+      - images/oneapi/base-toolkit/**
   pull_request:
     branches: [ "main" ]
 
