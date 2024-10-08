@@ -15,6 +15,7 @@ env:
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: oneapi
   DOCKERHUB_TAG: 'base-toolkit'
+  TRIVY_IMAGE_TAG: '0.55.0'
 
 jobs:
   
