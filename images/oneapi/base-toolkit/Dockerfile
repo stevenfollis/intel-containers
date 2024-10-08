@@ -35,8 +35,8 @@ RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
 # 1. Make sure prerequisites to add repository access are available
 RUN apt update && \
     apt install --yes \
-        gpg-agent \
-        wget
+    gpg-agent \
+    wget
 
 # 2. Add the online network package repository.
 RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-graphics.key | \
@@ -48,41 +48,41 @@ RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-gr
 
 # 4. Install packages responsible for computing and media runtimes.
 RUN apt install --yes \
-        intel-opencl-icd \
-        intel-level-zero-gpu \
-        level-zero \
-        intel-media-va-driver-non-free \
-        libmfx1 \
-        libmfxgen1 \
-        libvpl2 \
-        libegl-mesa0 \
-        libegl1-mesa \
-        libegl1-mesa-dev \
-        libgbm1 \
-        libgl1-mesa-dev \
-        libgl1-mesa-dri \
-        libglapi-mesa \
-        libgles2-mesa-dev \
-        libglx-mesa0 \
-        libigdgmm12 \
-        libxatracker2 \
-        mesa-va-drivers \
-        mesa-vdpau-drivers \
-        mesa-vulkan-drivers \
-        va-driver-all \
-        vainfo \
-        hwinfo \
-        clinfo && \
+    intel-opencl-icd \
+    intel-level-zero-gpu \
+    level-zero \
+    intel-media-va-driver-non-free \
+    libmfx1 \
+    libmfxgen1 \
+    libvpl2 \
+    libegl-mesa0 \
+    libegl1-mesa \
+    libegl1-mesa-dev \
+    libgbm1 \
+    libgl1-mesa-dev \
+    libgl1-mesa-dri \
+    libglapi-mesa \
+    libgles2-mesa-dev \
+    libglx-mesa0 \
+    libigdgmm12 \
+    libxatracker2 \
+    mesa-va-drivers \
+    mesa-vdpau-drivers \
+    mesa-vulkan-drivers \
+    va-driver-all \
+    vainfo \
+    hwinfo \
+    clinfo && \
     rm -rf /var/lib/apt/lists/*
 
 # 5. Install development packages
 RUN apt install --yes \
-        # libigc-dev \
-        intel-igc-cm \
-        # libigdfcl-dev \
-        # libigfxcmrt-dev \
-        # level-zero-dev \
-        && \
+    # libigc-dev \
+    intel-igc-cm \
+    # libigdfcl-dev \
+    # libigfxcmrt-dev \
+    # level-zero-dev \
+    && \
     rm -rf /var/lib/apt/lists/*
 
 # ============================================
@@ -93,10 +93,10 @@ RUN apt install --yes \
 # 1. Install CMake*, pkg-config, and GNU* Dev Tools to Build Samples
 RUN apt update && \
     apt install --yes \
-        cmake \
-        pkg-config \
-        build-essential \
-        && \
+    cmake \
+    pkg-config \
+    build-essential \
+    && \
     rm -rf /var/lib/apt/lists/*
 
 # 2. Set Environment Variables for CLI Development
