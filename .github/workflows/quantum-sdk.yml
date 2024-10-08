@@ -52,6 +52,7 @@ jobs:
       with:
         # Path to SARIF file relative to the root of the repository
         sarif_file: results.sarif
+        category: quantum-sdk
 
   push:
     runs-on: self-hosted
