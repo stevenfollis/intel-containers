@@ -5,16 +5,16 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - images/oneapi/base-toolkit/**
+    - images/oneapi/base-toolkit/**
   pull_request:
     branches: [ "main" ]
 
 env:
-      DOCKER_BUILDKIT: '1'
-      DOCKERFILE_PATH: images/oneapi/base-toolkit/Dockerfile
-      DOCKERHUB_REPOSTIORY: stevenfollis
-      DOCKERHUB_IMAGE: oneapi
-      DOCKERHUB_TAG: 'base-toolkit'
+  DOCKER_BUILDKIT: '1'
+  DOCKERFILE_PATH: images/oneapi/base-toolkit/Dockerfile
+  DOCKERHUB_REPOSTIORY: stevenfollis
+  DOCKERHUB_IMAGE: oneapi
+  DOCKERHUB_TAG: 'base-toolkit'
 
 jobs:
   
@@ -43,6 +43,7 @@ jobs:
 
   clean:
     runs-on: self-hosted
+    if: ${{ always() }}
     needs: [build, push]
     steps:
     - name: Prune the runner
