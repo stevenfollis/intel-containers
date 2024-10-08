@@ -9,6 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency: quantum-sdk
+
 env:
   DOCKER_BUILDKIT: '1'
   DOCKERFILE_PATH: images/quantum/Dockerfile

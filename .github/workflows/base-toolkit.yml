@@ -9,6 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency: base-toolkit
+
 env:
   DOCKER_BUILDKIT: '1'
   DOCKERFILE_PATH: images/oneapi/base-toolkit/Dockerfile
