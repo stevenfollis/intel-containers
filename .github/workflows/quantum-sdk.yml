@@ -47,6 +47,7 @@ jobs:
           image \
           --format sarif \
           --output /result/results.sarif \
+          --severity HIGH,CRITICAL \
           ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
