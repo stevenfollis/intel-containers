@@ -1,5 +1,3 @@
-
-
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
 FROM jupyter/minimal-notebook:latest
 ARG ONEAPI_INSTALLER_URL='https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e6ff8e9c-ee28-47fb-abd7-5c524c983e1c/l_BaseKit_p_2024.2.1.100_offline.sh'
