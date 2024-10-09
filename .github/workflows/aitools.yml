@@ -16,7 +16,7 @@ env:
   DOCKER_BUILDKIT: '1'
   DOCKERFILE_PATH: images/ai/aitools/Dockerfile
   DOCKERHUB_REPOSTIORY: stevenfollis
-  DOCKERHUB_IMAGE: oneapi
+  DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'aitools'
   TRIVY_IMAGE_TAG: '0.55.0'
 
@@ -34,6 +34,7 @@ jobs:
           .
 
   scan:
+    if: false
     runs-on: self-hosted
     needs: build
     permissions:

@@ -7,3 +7,13 @@
 This repository extends [docker-stacks](https://github.com/jupyter/docker-stacks) images with various Intel software components intended for deployment in JupyterLab environments.
 
 
+## Images
+
+| Category | Name | Status |
+| --- | --- | --- |
+| ai | AI Tools | - |
+| ai | openVino | - |
+| oneAPI | Base Toolkit | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) |
+| oneAPI | HPC Toolkit | - |
+| quantum | Quantum SDK | - |
+| rendering | Rendering Toolkit | - |
