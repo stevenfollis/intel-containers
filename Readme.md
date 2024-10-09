@@ -11,7 +11,7 @@ This repository extends [docker-stacks](https://github.com/jupyter/docker-stacks
 
 | Category | Name | Status |
 | --- | --- | --- |
-| ai | AI Tools | - |
+| ai | AI Tools | [![AI Tools from Intel](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml) |
 | ai | openVino | - |
 | oneAPI | Base Toolkit | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) |
 | oneAPI | HPC Toolkit | [![oneAPI HPC Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml) |
