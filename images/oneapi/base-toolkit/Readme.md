@@ -10,15 +10,3 @@ docker run \
     --user root \
     jhub:latest \
     bash
-
-
-
-docker run \
-    --env GRANT_SUDO=yes \
-    --interactive \
-    --publish 8888:8888 \
-    --rm \
-    --tty \
-    --user root \
-    stevenfollis/oneapi:sample \
-    bash
