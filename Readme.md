@@ -14,6 +14,6 @@ This repository extends [docker-stacks](https://github.com/jupyter/docker-stacks
 | ai | AI Tools | - |
 | ai | openVino | - |
 | oneAPI | Base Toolkit | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) |
-| oneAPI | HPC Toolkit | - |
-| quantum | Quantum SDK | - |
+| oneAPI | HPC Toolkit | [![oneAPI HPC Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml) |
+| quantum | Quantum SDK | [![Intel Quantum SDK](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml) |
 | rendering | Rendering Toolkit | - |
