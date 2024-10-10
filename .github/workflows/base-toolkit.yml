@@ -79,4 +79,4 @@ jobs:
     needs: [build, scan, push]
     steps:
     - name: Prune the runner
-      run: docker system prune --all --force
+      run: docker system prune --force
