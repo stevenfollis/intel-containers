@@ -1,5 +1,6 @@
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
 FROM jupyter/minimal-notebook:latest
+
 ARG ONEAPI_INSTALLER_URL='https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e6ff8e9c-ee28-47fb-abd7-5c524c983e1c/l_BaseKit_p_2024.2.1.100_offline.sh'
 ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/lts/2350/intel-gpu-ubuntu-jammy-2350.run'
 
@@ -28,7 +29,6 @@ RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
     chmod +x driver.run && \
     sudo ./driver.run && \
     rm driver.run
-
 
 # 1. Make sure prerequisites to add repository access are available
 RUN apt update && \
@@ -101,12 +101,6 @@ RUN apt update && \
 # https://github.com/intel/oneapi-containers/blob/master/images/docker/basekit/Dockerfile.ubuntu-22.04
 # Extends the default CMD behavior by first running the oneAPI environment variable script then continuing to the Jupyter startup
 CMD ["/bin/bash", "-c", "source /opt/intel/oneapi/2024.2/oneapi-vars.sh; /usr/local/bin/start-notebook.py"]
-
-# ============================================
-# Install 
-# Clone the oneAPI Sample Repository
-# ============================================
-RUN git clone https://github.com/oneapi-src/oneAPI-samples.git work/oneAPI-samples
 
 # ============================================
 # Cleanup and reset values back to base image
