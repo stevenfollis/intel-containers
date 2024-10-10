@@ -34,7 +34,7 @@ jobs:
           .
 
   scan:
-    if: false
+    # if: false
     runs-on: self-hosted
     needs: build
     permissions:
