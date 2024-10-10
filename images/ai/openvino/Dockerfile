@@ -48,6 +48,14 @@ USER root
 # Create a symbolic link as below:
 RUN cd /opt/intel && ln -s openvino_2024.4.0 openvino_2024
 
+# Install OpenCV
+# https://github.com/opencv/opencv/wiki/BuildOpenCV4OpenVINO#installing-on-ubuntu
+RUN apt update && \
+  apt install --yes \
+  libopencv-dev \
+  python3-opencv && \
+  rm -rf /var/lib/apt/lists/*
+
 # Extends the default CMD behavior by first running the oneAPI environment variable script then continuing to the Jupyter startup
 CMD ["/bin/bash", "-c", "source /opt/intel/openvino_2024/setupvars.sh; /usr/local/bin/start-notebook.py"]
 
