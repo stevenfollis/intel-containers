@@ -34,7 +34,7 @@ jobs:
           .
 
   scan:
-    if: false
+    # if: false
     runs-on: self-hosted
     needs: build
     permissions:
@@ -52,6 +52,7 @@ jobs:
           --format sarif \
           --output /result/results.sarif \
           --severity HIGH,CRITICAL \
+          --timeout 30m \
           ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
