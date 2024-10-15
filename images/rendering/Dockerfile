@@ -1,7 +1,8 @@
 # TODO: Finish / WIP
 
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
-FROM jupyter/minimal-notebook:latest
+# FROM jupyter/minimal-notebook:latest
+FROM stevenfollis/intel-containers:minimal-notebook-2024-10-14
 
 ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/lts/2350/intel-gpu-ubuntu-jammy-2350.run'
 

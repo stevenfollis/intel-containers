@@ -1,5 +1,6 @@
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
-FROM jupyter/minimal-notebook:latest
+# FROM jupyter/minimal-notebook:latest
+FROM stevenfollis/intel-containers:minimal-notebook-2024-10-14
 
 LABEL mode="MPI" version="1.0" description="intel-qs built with MPI, no py interface, with Examples"
 

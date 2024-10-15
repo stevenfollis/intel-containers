@@ -1,5 +1,6 @@
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
-FROM jupyter/minimal-notebook:latest
+# FROM jupyter/minimal-notebook:latest
+FROM stevenfollis/intel-containers:minimal-notebook-2024-10-14
 
 ARG ONEAPI_INSTALLER_URL='https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e6ff8e9c-ee28-47fb-abd7-5c524c983e1c/l_BaseKit_p_2024.2.1.100_offline.sh'
 ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/lts/2350/intel-gpu-ubuntu-jammy-2350.run'
