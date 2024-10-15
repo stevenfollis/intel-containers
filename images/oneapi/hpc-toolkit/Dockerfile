@@ -1,7 +1,6 @@
-
-
 # https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
 FROM stevenfollis/oneapi:base-toolkit-2024.2.1
+
 ARG ONEAPI_INSTALLER_URL='https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d461a695-6481-426f-a22f-b5644cd1fa8b/l_HPCKit_p_2024.2.1.79_offline.sh'
 
 # Set root user to configure environment
