@@ -18,7 +18,7 @@ env:
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'base-toolkit'
-  TRIVY_IMAGE_TAG: '0.55.0'
+  TRIVY_IMAGE_TAG: '0.56.2'
 
 jobs:
   
