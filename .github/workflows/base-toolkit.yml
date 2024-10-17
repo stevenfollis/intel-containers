@@ -28,7 +28,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Lint with Hadolint
-      run: docker run --rm -i ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
+      run: docker run --rm -i ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH} && return 0;
 
   containerize:
     runs-on: self-hosted
