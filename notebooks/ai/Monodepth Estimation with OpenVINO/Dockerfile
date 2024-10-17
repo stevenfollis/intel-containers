@@ -11,6 +11,5 @@ USER jovyan
 
 # Copy notebook and supporting files
 RUN mkdir /home/jovyan/notebook/
-COPY /vision-monodepth/ /home/jovyan/notebook/
-
+COPY --chown=jovyan:100 /vision-monodepth/ /home/jovyan/notebook/
 
