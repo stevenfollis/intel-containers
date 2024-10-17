@@ -1,1 +1,5 @@
+# Hadoline Configuration File
+# Used to lint Dockerifle
+# https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
+
 no-fail: true
