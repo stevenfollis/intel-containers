@@ -28,25 +28,27 @@ RUN wget --quiet --output-document oneapi.sh ${ONEAPI_INSTALLER_URL} && \
 
 RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
     chmod +x driver.run && \
-    sudo ./driver.run && \
+    ./driver.run && \
     rm driver.run
 
 # 1. Make sure prerequisites to add repository access are available
-RUN apt update && \
-    apt install --yes \
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
     gpg-agent \
-    wget
+    wget && \
+    rm -rf /var/lib/apt/lists/*
 
 # 2. Add the online network package repository.
 RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-graphics.key | \
-    sudo gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg && \
+    gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg && \
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/gpu/ubuntu jammy/lts/2350 unified" > /etc/apt/sources.list.d/intel-gpu-jammy.list && \
-    sudo apt update
+    apt-get update && \
+    rm -rf /var/lib/apt/lists/*
 
 # 3. Install kernel and Intel® XPU System Management Interface (XPU-SMI) packages on a bare metal system. Installation on the host is sufficient for hardware management and support of the runtimes in containers and bare metal.
 
 # 4. Install packages responsible for computing and media runtimes.
-RUN apt install --yes \
+RUN apt-get install --yes --no-install-recommends \
     intel-opencl-icd \
     intel-level-zero-gpu \
     level-zero \
@@ -75,7 +77,7 @@ RUN apt install --yes \
     rm -rf /var/lib/apt/lists/*
 
 # 5. Install development packages
-RUN apt install --yes \
+RUN apt-get install --yes --no-install-recommends \
     # libigc-dev \
     intel-igc-cm \
     # libigdfcl-dev \
@@ -90,8 +92,8 @@ RUN apt install --yes \
 # ============================================
 
 # 1. Install CMake*, pkg-config, and GNU* Dev Tools to Build Samples
-RUN apt update && \
-    apt install --yes \
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
     cmake \
     pkg-config \
     build-essential \

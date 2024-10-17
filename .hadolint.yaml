@@ -3,3 +3,5 @@
 # https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
 
 no-fail: true
+ignored:
+  - DL3008
