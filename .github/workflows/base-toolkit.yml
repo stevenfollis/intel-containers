@@ -25,7 +25,7 @@ env:
 jobs:
   
   lint:
-    runs-one: self-hosted
+    runs-on: self-hosted
     steps:
     - name: Lint with Hadolint
       run: docker run --rm -i ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
