@@ -19,11 +19,20 @@ env:
   DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'hpc-toolkit'
   TRIVY_IMAGE_TAG: '0.56.2'
+  HADOLINT_IMAGE: 'hadolint/hadolint'
+  HADOLINT_TAG: 'fcbd01791c9251d83f2486e61ecaf41ee700a766-alpine-amd64'
 
 jobs:
   
+  lint:
+    runs-on: self-hosted
+    steps:
+    - name: Lint with Hadolint
+      run: docker run --interactive --rm --volume "$(pwd)/.hadolint.yaml:/.hadolint.yaml" ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
+
   containerize:
     runs-on: self-hosted
+    needs: lint
     steps:
     
     - uses: actions/checkout@v4
