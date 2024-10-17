@@ -35,6 +35,7 @@ RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
     gpg-agent \
+    gpg \
     wget && \
     rm -rf /var/lib/apt/lists/*
 
@@ -48,7 +49,8 @@ RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-gr
 # 3. Install kernel and Intel® XPU System Management Interface (XPU-SMI) packages on a bare metal system. Installation on the host is sufficient for hardware management and support of the runtimes in containers and bare metal.
 
 # 4. Install packages responsible for computing and media runtimes.
-RUN apt-get install --yes --no-install-recommends \
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
     intel-opencl-icd \
     intel-level-zero-gpu \
     level-zero \
@@ -73,18 +75,18 @@ RUN apt-get install --yes --no-install-recommends \
     va-driver-all \
     vainfo \
     hwinfo \
-    clinfo && \
-    rm -rf /var/lib/apt/lists/*
+    clinfo \
+    && rm -rf /var/lib/apt/lists/*
 
 # 5. Install development packages
-RUN apt-get install --yes --no-install-recommends \
-    # libigc-dev \
-    intel-igc-cm \
-    # libigdfcl-dev \
-    # libigfxcmrt-dev \
-    # level-zero-dev \
-    && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get install --yes --no-install-recommends \
+#     libigc-dev \
+#     intel-igc-cm \
+#     libigdfcl-dev \
+#     libigfxcmrt-dev \
+#     level-zero-dev \
+#     && \
+#     rm -rf /var/lib/apt/lists/*
 
 # ============================================
 # Configure System
@@ -94,11 +96,10 @@ RUN apt-get install --yes --no-install-recommends \
 # 1. Install CMake*, pkg-config, and GNU* Dev Tools to Build Samples
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
+    build-essential \
     cmake \
     pkg-config \
-    build-essential \
-    && \
-    rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # 2. Set Environment Variables for CLI Development
 # https://github.com/intel/oneapi-containers/blob/master/images/docker/basekit/Dockerfile.ubuntu-22.04

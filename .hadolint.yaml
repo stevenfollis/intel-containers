@@ -3,5 +3,6 @@
 # https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
 
 no-fail: true
+format: tty
 ignored:
   - DL3008
