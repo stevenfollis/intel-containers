@@ -15,9 +15,10 @@ ENV CONDA_DIR=/opt/conda
 
 # Install the GNU Make utility & generic MPI implementation
 RUN apt-get update && \
-  apt-get install --yes --no-install-recommends \
+  apt-get install --yes \
   build-essential \
   g++ \
+  gnupg \
   make \
   mpich && \
   rm -rf /var/lib/apt/lists/*
