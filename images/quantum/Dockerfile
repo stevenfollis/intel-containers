@@ -14,8 +14,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV CONDA_DIR=/opt/conda
 
 # Install the GNU Make utility & generic MPI implementation
-RUN apt update && \
-  apt install --yes \
+RUN apt-get update && \
+  apt-get install --yes --no-install-recommends \
   build-essential \
   g++ \
   make \
@@ -31,14 +31,14 @@ RUN wget --quiet --output-document cmake.tar.gz ${CMAKE_INSTALLER_URL} && \
 RUN wget --quiet https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB -O- | apt-key add - && \
   echo 'deb https://apt.repos.intel.com/mkl all main' > /etc/apt/sources.list.d/intel-mkl.list && \
   apt-get update && \
-  apt-get install --yes \
+  apt-get install --yes --no-install-recommends \
   intel-mkl-64bit-2019.2-057 && \
   rm -rf /var/lib/apt/lists/* && \
   echo 'export MKLROOT=/opt/intel/mkl' >> /etc/bash.bashrc
 
 # Install libraries for OpenMP.
 RUN apt-get update && \
-  apt-get install --yes \ 
+  apt-get install --yes --no-install-recommends \ 
   libomp-dev && \
   rm -rf /var/lib/apt/lists/*
 
