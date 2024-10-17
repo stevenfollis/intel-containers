@@ -32,8 +32,7 @@ jobs:
         --interactive \
         --rm \
         --volume $(pwd)/.hadolint.yaml:/.hadolint.yaml \
-        ${HADOLINT_IMAGE}:${HADOLINT_TAG} \
-        < ${DOCKERFILE_PATH}
+        ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
 
   containerize:
     runs-on: self-hosted
