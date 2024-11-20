@@ -14,7 +14,7 @@ concurrency:
 
 env:
   DOCKER_BUILDKIT: '1'
-  DOCKERFILE_PATH: images/oneapi/base-toolkit/Dockerfile
+  DOCKERFILE_PATH: images/base/intel-gpu/lts/Dockerfile
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'intel-gpu-lts'
