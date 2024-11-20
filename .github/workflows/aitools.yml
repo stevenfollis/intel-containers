@@ -18,7 +18,7 @@ env:
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'aitools'
-  TRIVY_IMAGE_TAG: '0.56.2'
+  TRIVY_IMAGE_TAG: '0.57.1'
   HADOLINT_IMAGE: 'hadolint/hadolint'
   HADOLINT_TAG: 'fcbd01791c9251d83f2486e61ecaf41ee700a766-alpine-amd64'
 

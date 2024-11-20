@@ -3,13 +3,13 @@ name: oneAPI HPC Toolkit
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: ['main']
     paths:
-    - images/oneapi/hpc-toolkit/**
+      - images/oneapi/hpc-toolkit/**
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 env:
@@ -18,43 +18,41 @@ env:
   DOCKERHUB_REPOSTIORY: stevenfollis
   DOCKERHUB_IMAGE: intel-containers
   DOCKERHUB_TAG: 'hpc-toolkit'
-  TRIVY_IMAGE_TAG: '0.56.2'
+  TRIVY_IMAGE_TAG: '0.57.1'
   HADOLINT_IMAGE: 'hadolint/hadolint'
   HADOLINT_TAG: 'fcbd01791c9251d83f2486e61ecaf41ee700a766-alpine-amd64'
 
 jobs:
-  
   lint:
     runs-on: self-hosted
     steps:
-    - name: Lint with Hadolint
-      run: docker run --interactive --rm --volume "$(pwd)/.hadolint.yaml:/.hadolint.yaml" ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
+      - name: Lint with Hadolint
+        run: docker run --interactive --rm --volume "$(pwd)/.hadolint.yaml:/.hadolint.yaml" ${HADOLINT_IMAGE}:${HADOLINT_TAG} < ${DOCKERFILE_PATH}
 
   containerize:
     runs-on: self-hosted
     needs: lint
     steps:
-    
-    - uses: actions/checkout@v4
-    
-    - name: Build the Docker image
-      run: |
-        docker build \
-          --file ${DOCKERFILE_PATH} \
-          --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7} \
-          .
+      - uses: actions/checkout@v4
 
-    - name: Login to container registry
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build the Docker image
+        run: |
+          docker build \
+            --file ${DOCKERFILE_PATH} \
+            --tag ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7} \
+            .
 
-    - name: Push container image to registry
-      run: docker push ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
+      - name: Login to container registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Prune the runner
-      run: docker system prune --force
+      - name: Push container image to registry
+        run: docker push ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
+
+      - name: Prune the runner
+        run: docker system prune --force
 
   scan:
     runs-on: self-hosted
@@ -62,34 +60,34 @@ jobs:
     permissions:
       security-events: write
     steps:
-    - name: Login to container registry
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
-    - name: Pull container images from registry
-      run: |
-        docker pull ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7};
-        docker pull aquasec/trivy:${TRIVY_IMAGE_TAG};
+      - name: Login to container registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Scan container image with Trivy
-      run: |
-        docker run \
-          --volume /var/run/docker.sock:/var/run/docker.sock \
-          --volume /trivy/.cache:/root/.cache/ \
-          --volume $PWD:/result \
-          aquasec/trivy:${TRIVY_IMAGE_TAG} \
-          image \
-          --format sarif \
-          --output /result/results.sarif \
-          --severity HIGH,CRITICAL \
-          --timeout 30m \
-          ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
+      - name: Pull container images from registry
+        run: |
+          docker pull ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7};
+          docker pull aquasec/trivy:${TRIVY_IMAGE_TAG};
 
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        # Path to SARIF file relative to the root of the repository
-        sarif_file: results.sarif
-        category: base-toolkit
+      - name: Scan container image with Trivy
+        run: |
+          docker run \
+            --volume /var/run/docker.sock:/var/run/docker.sock \
+            --volume /trivy/.cache:/root/.cache/ \
+            --volume $PWD:/result \
+            aquasec/trivy:${TRIVY_IMAGE_TAG} \
+            image \
+            --format sarif \
+            --output /result/results.sarif \
+            --severity HIGH,CRITICAL \
+            --timeout 30m \
+            ${DOCKERHUB_REPOSTIORY}/${DOCKERHUB_IMAGE}:${DOCKERHUB_TAG}-${GITHUB_SHA::7}
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: results.sarif
+          category: base-toolkit
