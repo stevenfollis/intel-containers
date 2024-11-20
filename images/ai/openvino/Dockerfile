@@ -1,24 +1,11 @@
-# https://github.com/jupyter/docker-stacks/blob/main/images/minimal-notebook/Dockerfile
-# FROM jupyter/minimal-notebook:latest
-FROM stevenfollis/intel-containers:minimal-notebook-2024-08-26
-
-ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/lts/2350/intel-gpu-ubuntu-jammy-2350.run'
+FROM stevenfollis/intel-containers:intel-gpu-lts
 
 ARG OPENNVINO_VERSION='2024.4.0'
-ARG OPENVINO_INSTALLER_URL="https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/2024.4/linux/openvino_genai_ubuntu22_2024.4.0.0_x86_64.tar.gz"
+ARG OPENVINO_INSTALLER_URL='https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/2024.4/linux/openvino_genai_ubuntu22_2024.4.0.0_x86_64.tar.gz'
 
 # Set root user to configure environment
 USER root
 ENV DEBIAN_FRONTEND=noninteractive
-
-# ============================================
-# Install Intel GPU Drivers
-# https://dgpu-docs.intel.com/driver/installation.html#ubuntu
-# ============================================
-RUN wget --quiet --output-document driver.run ${INTEL_GPU_DRIVER_URL} && \
-  chmod +x driver.run && \
-  sudo ./driver.run && \
-  rm driver.run
 
 # ============================================
 # Install OpenVINO GenAi Archive Package
