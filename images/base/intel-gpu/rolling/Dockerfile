@@ -1,5 +1,5 @@
 # https://dgpu-docs.intel.com/driver/installation-rolling.html#ubuntu
-FROM stevenfollis/intel-containers:minimal-notebook-2024-08-2
+FROM stevenfollis/intel-containers:minimal-notebook-2024-08-26
 
 ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/intel-gpu-ubuntu-jammy.run'
 

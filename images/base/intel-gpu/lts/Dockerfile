@@ -1,5 +1,5 @@
 # https://dgpu-docs.intel.com/driver/installation.html#ubuntu
-FROM stevenfollis/intel-containers:minimal-notebook-2024-08-2
+FROM stevenfollis/intel-containers:minimal-notebook-2024-08-26
 
 ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/lts/2350/intel-gpu-ubuntu-jammy-2350.run'
 
