@@ -30,7 +30,7 @@ RUN /opt/intel/openvino_2024.4.0/install_dependencies/install_openvino_dependenc
 
 # Install numpy Python Library:
 USER jovyan
-RUN python3 -m pip install --requirement /opt/intel/openvino_2024.4.0/python/requirements.txt
+RUN python3 -m pip install --no-cache-dir --requirement /opt/intel/openvino_2024.4.0/python/requirements.txt
 USER root
 
 # Create a symbolic link as below:
@@ -38,8 +38,8 @@ RUN cd /opt/intel && ln -s openvino_2024.4.0 openvino_2024
 
 # Install OpenCV
 # https://github.com/opencv/opencv/wiki/BuildOpenCV4OpenVINO#installing-on-ubuntu
-RUN apt update && \
-  apt install --yes \
+RUN apt-get update && \
+  apt-get install --yes --no-install-recommends \
   libopencv-dev \
   python3-opencv && \
   rm -rf /var/lib/apt/lists/*
