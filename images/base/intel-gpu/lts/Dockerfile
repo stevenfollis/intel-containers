@@ -7,6 +7,8 @@ ARG INTEL_GPU_DRIVER_URL='https://repositories.intel.com/gpu/ubuntu/dists/jammy/
 USER root
 ENV DEBIAN_FRONTEND=noninteractive
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # ============================================
 # Install Intel GPU Drivers
 # https://dgpu-docs.intel.com/driver/installation.html#ubuntu
@@ -21,11 +23,11 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 # 2. Add the online network package repository.
-# RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-graphics.key | \
-#     gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg && \
-#     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/gpu/ubuntu jammy/lts/2350 unified" > /etc/apt/sources.list.d/intel-gpu-jammy.list && \
-#     apt-get update && \
-#     rm -rf /var/lib/apt/lists/*
+RUN wget --quiet --output-document - https://repositories.intel.com/gpu/intel-graphics.key | \
+    gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/gpu/ubuntu jammy/lts/2350 unified" > /etc/apt/sources.list.d/intel-gpu-jammy.list && \
+    apt-get update && \
+    rm -rf /var/lib/apt/lists/*
 
 # 2. Optionally, instead of using the online network package repository, you can download and use the offline repository
 RUN wget --quiet --output-document intel-gpu-ubuntu.run ${INTEL_GPU_DRIVER_URL} && \
