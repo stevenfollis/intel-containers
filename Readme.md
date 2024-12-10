@@ -19,7 +19,7 @@ This repository holds both container images, and fully composed learning noteboo
 | oneAPI    | Base Toolkit      | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) |
 | oneAPI    | HPC Toolkit       | [![oneAPI HPC Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml)    |
 | quantum   | Quantum SDK       | [![Intel Quantum SDK](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml)     |
-| rendering | Rendering Toolkit | TODO                                                                                                                                                                                                         |
+| rendering | RenderKit         | [![RenderKit](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml)                 |
 
 ### Image Relationships
 
@@ -33,7 +33,7 @@ graph LR;
     5[ai/aitools]
     6[ai/openvino]
     7[quantum]
-    8[rendering]
+    8[renderkit]
     9[triton]
     0 --> 1
     0 --> 2

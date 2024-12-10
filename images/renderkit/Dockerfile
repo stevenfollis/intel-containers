@@ -35,5 +35,14 @@ RUN git clone https://github.com/RenderKit/superbuild && \
     cmake --build . && \
     mkdir --parents /opt/intel/renderkit && \
     cp --recursive install/* /opt/intel/renderkit/ && \
-    cd /home/jovyan && \
-    rm -rf /home/jovyan/superbuild
+    cd /home/jovyan 
+    # && \
+    # rm -rf /home/jovyan/superbuild
+
+# ============================================
+# Cleanup and reset values back to base image
+# ============================================
+
+# Reset default user
+ENV DEBIAN_FRONTEND=interactive
+USER jovyan
