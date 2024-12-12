@@ -12,14 +12,14 @@ This repository holds both container images, and fully composed learning noteboo
 
 ### Images
 
-| Category  | Name              | Status                                                                                                                                                                                                       |
-| --------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ai        | AI Tools          | [![AI Tools from Intel](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml)           |
-| ai        | openVino          | [![openVINO](https://github.com/stevenfollis/intel-containers/actions/workflows/openvino.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/openvino.yml)                    |
-| oneAPI    | Base Toolkit      | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) |
-| oneAPI    | HPC Toolkit       | [![oneAPI HPC Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml)    |
-| quantum   | Quantum SDK       | [![Intel Quantum SDK](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml)     |
-| rendering | RenderKit         | [![RenderKit](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml)                 |
+| Category  | Name              | Status                                                                                                                                                                                                       | Documentation |
+| --------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
+| ai        | AI Tools          | [![AI Tools from Intel](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/aitools.yml)           | [https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/frameworks-tools.html](📄) |
+| ai        | openVino          | [![openVINO](https://github.com/stevenfollis/intel-containers/actions/workflows/openvino.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/openvino.yml)                    | [https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html](📄) |
+| oneAPI    | Base Toolkit      | [![oneAPI Base Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/base-toolkit.yml) | [https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html](📄) |
+| oneAPI    | HPC Toolkit       | [![oneAPI HPC Toolkit](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/hpc-toolkit.yml)    | [https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html](📄) |
+| quantum   | Quantum SDK       | [![Intel Quantum SDK](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/quantum-sdk.yml)     | [https://www.intel.com/content/www/us/en/developer/tools/quantum-sdk/overview.html](📄) |
+| rendering | RenderKit         | [![RenderKit](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml/badge.svg)](https://github.com/stevenfollis/intel-containers/actions/workflows/renderkit.yml)                 | [https://www.intel.com/content/www/us/en/developer/tools/oneapi/rendering-toolkit.html](📄) |
 
 ### Image Relationships
 
@@ -42,7 +42,7 @@ graph LR;
     3 --> 5
     1 --> 6
     0 --> 7
-    0 --> 8
+    1 --> 8
     1 --> 9
 ```
 
