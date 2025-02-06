@@ -83,8 +83,6 @@ RUN apt-get update && \
 # Cleanup and reset values back to base image
 # ============================================
 
-# FooBar
-
 # Reset default user
 ENV DEBIAN_FRONTEND=interactive
 USER jovyan
